@@ -41,7 +41,6 @@ export const UserTable = ({ users, currentUser, onAdd, onEdit, onDelete }: UserT
       title: "Ações",
       key: "actions",
       render: (_: any, record: User) => {
-        if (!currentUser.isAdmin) return null; // apenas admins veem ações
         return (
           <Space>
             <Button type="text" icon={<EditOutlined />} onClick={() => onEdit?.(record)} />
@@ -76,11 +75,9 @@ export const UserTable = ({ users, currentUser, onAdd, onEdit, onDelete }: UserT
         }}
       >
         <Title level={3}>Gerenciamento de Usuários</Title>
-        {currentUser.isAdmin && (
-          <Button type="primary" icon={<PlusOutlined />} onClick={onAdd}>
-            Adicionar Usuário
-          </Button>
-        )}
+        <Button type="primary" icon={<PlusOutlined />} onClick={onAdd}>
+          Adicionar Usuário
+        </Button>
       </div>
 
       <Table
